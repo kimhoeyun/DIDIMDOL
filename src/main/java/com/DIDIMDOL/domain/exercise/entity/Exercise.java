@@ -1,11 +1,13 @@
 package com.DIDIMDOL.domain.exercise.entity;
 
-import com.DIDIMDOL.domain.traingmeta.entity.TrainingMeta;
+import com.DIDIMDOL.domain.trainingmeta.entity.TrainingMeta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Exercise {
