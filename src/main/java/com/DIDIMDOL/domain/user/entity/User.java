@@ -1,23 +1,33 @@
 package com.DIDIMDOL.domain.user.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
-public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@AllArgsConstructor
+@Getter
 
-    @Column
+public class User {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false, unique = true)
+    private long userid;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
-    private String userId;
-
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Enumerated(EnumType.STRING)
     private Status status;
+
 }
