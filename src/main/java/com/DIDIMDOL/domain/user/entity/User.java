@@ -1,9 +1,13 @@
 package com.DIDIMDOL.domain.user.entity;
 
+import com.DIDIMDOL.domain.progress.entity.Progress;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -29,5 +33,8 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @OneToMany(mappedBy = "User")
+    private List<Progress> progresses = new ArrayList<>();
 
 }
