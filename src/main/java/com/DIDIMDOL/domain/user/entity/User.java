@@ -2,14 +2,14 @@ package com.DIDIMDOL.domain.user.entity;
 
 import com.DIDIMDOL.domain.progress.entity.Progress;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @NoArgsConstructor
 
