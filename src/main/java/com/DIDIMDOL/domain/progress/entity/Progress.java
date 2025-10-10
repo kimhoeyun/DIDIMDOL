@@ -15,7 +15,7 @@ public class Progress {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private int attempCnt;
+    private int attemptCnt;
 
     private Integer bestScore;
     private Integer lastScore;
