@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @NoArgsConstructor
-
+@Table(name = "users")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +27,7 @@ public class User {
     private String password;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @OneToMany(mappedBy = "user")
