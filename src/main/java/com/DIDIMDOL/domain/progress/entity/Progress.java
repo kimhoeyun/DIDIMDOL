@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(
+        uniqueConstraints = @UniqueConstraint(columnNames = {"userId", "trainingType"})
+)
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
