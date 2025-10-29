@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(
+        uniqueConstraints = @UniqueConstraint(columnNames = {"userId", "trainingType"})
+)
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -29,4 +32,14 @@ public class Progress {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    public void updateScores(int newScore) {
+        int totalCnt = this.attemptCnt + 1;
+        int currentAvg = (this.avgScore == null ? 0 : this.avgScore);
+        int newAvg = (currentAvg * this.attemptCnt + newScore) / totalCnt;
+
+        this.attemptCnt = totalCnt;
+        this.lastScore = newScore;
+        this.bestScore = Math.max(this.bestScore == null ? 0 : this.bestScore, newScore);
+        this.avgScore = newAvg;
+    }
 }
