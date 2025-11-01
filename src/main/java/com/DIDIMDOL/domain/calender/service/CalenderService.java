@@ -64,4 +64,14 @@ public class CalenderService {
         return CalenderResponseDto.fromEntity(calender);
     }
 
+    @Transactional
+    public void deleteCalender(CalenderRequestDto dto){
+        Calender calender = calenderRepository
+                .findByUserIdAndDate(dto.getUserId(), dto.getDate())
+                .orElseThrow(() -> new IllegalArgumentException(" "));
+
+        calenderRepository.delete(calender);
+    }
+
+
 }

@@ -39,4 +39,10 @@ public class CalenderController {
         return ResponseEntity.ok(calenderService.updateCalenderComplete(dto));
     }
 
-}
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCalender(@RequestBody CalenderRequestDto dto){
+        calenderService.deleteCalender(dto);
+        return ResponseEntity.noContent().build();
+
+
+    }
