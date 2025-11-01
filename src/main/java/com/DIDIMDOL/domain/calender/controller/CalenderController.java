@@ -18,7 +18,7 @@ public class CalenderController {
     private final CalenderService calenderService;
 
     @PostMapping
-    public ResponseEntity<CalenderResponseDto> addCalender(@Valid @RequestBody CalenderRequestDto dto){
+    public ResponseEntity<CalenderResponseDto> addCalender(@Valid @RequestBody CalenderRequestDto dto) {
         CalenderResponseDto calenderResponseDto = calenderService.addCalender(dto);
 
         return ResponseEntity.ok(calenderResponseDto);
@@ -30,19 +30,20 @@ public class CalenderController {
     }
 
     @PutMapping("/content")
-    public ResponseEntity<CalenderResponseDto> updateCalenderContent(@RequestBody CalenderRequestDto dto){
+    public ResponseEntity<CalenderResponseDto> updateCalenderContent(@RequestBody CalenderRequestDto dto) {
         return ResponseEntity.ok(calenderService.updateCalenderContent(dto));
     }
 
     @PutMapping("/complete")
-    public ResponseEntity<CalenderResponseDto> updateCalenderComplete(@RequestBody CalenderRequestDto dto){
+    public ResponseEntity<CalenderResponseDto> updateCalenderComplete(@RequestBody CalenderRequestDto dto) {
         return ResponseEntity.ok(calenderService.updateCalenderComplete(dto));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteCalender(@RequestBody CalenderRequestDto dto){
+    public ResponseEntity<Void> deleteCalender(@RequestBody CalenderRequestDto dto) {
         calenderService.deleteCalender(dto);
         return ResponseEntity.noContent().build();
 
 
     }
+}
