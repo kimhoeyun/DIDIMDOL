@@ -17,19 +17,18 @@ import java.time.LocalDate;
 public class Calender {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private LocalDate date;
     private String content;
 
     private boolean complete;
 
-    public void updateComplete(){
-        this.complete = complete;
+    public void updateComplete(boolean complete){
+        this.complete = !complete;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
 }
