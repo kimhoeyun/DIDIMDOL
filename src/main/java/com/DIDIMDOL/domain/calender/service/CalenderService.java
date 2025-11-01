@@ -53,4 +53,15 @@ public class CalenderService {
 
         return CalenderResponseDto.fromEntity(calender);
     }
+
+    @Transactional
+    public CalenderResponseDto updateCalenderComplete(CalenderRequestDto dto){
+        Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
+                .orElseThrow(()-> new IllegalArgumentException(""));
+
+        calender.updateComplete(calender.isComplete());
+
+        return CalenderResponseDto.fromEntity(calender);
+    }
+
 }

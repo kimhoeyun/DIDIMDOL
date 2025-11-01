@@ -34,4 +34,9 @@ public class CalenderController {
         return ResponseEntity.ok(calenderService.updateCalenderContent(dto));
     }
 
+    @PutMapping("/complete")
+    public ResponseEntity<CalenderResponseDto> updateCalenderComplete(@RequestBody CalenderRequestDto dto){
+        return ResponseEntity.ok(calenderService.updateCalenderComplete(dto));
+    }
+
 }
