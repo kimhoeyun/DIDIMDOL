@@ -43,4 +43,14 @@ public class CalenderService {
                 .map(CalenderResponseDto::fromEntity)
                 .toList();
     }
+
+    @Transactional
+    public CalenderResponseDto updateCalenderContent(CalenderRequestDto dto){
+        Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
+                .orElseThrow(() -> new IllegalArgumentException(""));
+
+        calender.updateContent(dto.getContent());
+
+        return CalenderResponseDto.fromEntity(calender);
+    }
 }

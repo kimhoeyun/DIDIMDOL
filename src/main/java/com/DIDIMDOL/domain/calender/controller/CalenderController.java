@@ -28,4 +28,10 @@ public class CalenderController {
     public ResponseEntity<List<CalenderResponseDto>> getAllCalenders(@PathVariable Long userId) {
         return ResponseEntity.ok(calenderService.getCalender(userId));
     }
+
+    @PutMapping("/content")
+    public ResponseEntity<CalenderResponseDto> updateCalenderContent(@RequestBody CalenderRequestDto dto){
+        return ResponseEntity.ok(calenderService.updateCalenderContent(dto));
+    }
+
 }

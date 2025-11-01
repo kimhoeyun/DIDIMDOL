@@ -28,6 +28,11 @@ public class Calender {
         this.complete = !complete;
     }
 
+    public void updateContent(String content){
+        this.content = content;
+    }
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
