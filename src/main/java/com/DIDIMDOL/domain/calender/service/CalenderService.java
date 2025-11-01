@@ -20,11 +20,11 @@ public class CalenderService {
     private final UserRepository userRepository;
 
     @Transactional
-    public CalenderResponseDto addCalender(Long userId, CalenderRequestDto dto){
-        User user = userRepository.findById(userId)
-                .orElseThrow();
+    public CalenderResponseDto addCalender(CalenderRequestDto dto){
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다"));;
 
-        Calender calender = calenderRepository.findByUserIdAndDate(userId, dto.getDate())
+        Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
                 .orElseGet(() -> calenderRepository.save(
                         Calender.builder()
                                 .user(user)
@@ -43,5 +43,4 @@ public class CalenderService {
                 .map(CalenderResponseDto::fromEntity)
                 .toList();
     }
-
 }
