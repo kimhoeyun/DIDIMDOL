@@ -59,7 +59,7 @@ public class CalenderService {
         Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
                 .orElseThrow(()-> new IllegalArgumentException("일정이 존재하지 않습니다"));
 
-        calender.updateComplete(calender.isComplete());
+        calender.updateComplete(true);
 
         return CalenderResponseDto.fromEntity(calender);
     }

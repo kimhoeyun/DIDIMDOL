@@ -25,7 +25,7 @@ public class Calender {
     private boolean complete;
 
     public void updateComplete(boolean complete){
-        this.complete = !complete;
+        this.complete = complete;
     }
 
     public void updateContent(String content){
