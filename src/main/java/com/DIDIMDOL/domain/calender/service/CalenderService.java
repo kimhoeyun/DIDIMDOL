@@ -24,15 +24,14 @@ public class CalenderService {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다"));;
 
-        Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
-                .orElseGet(() -> calenderRepository.save(
+        Calender calender = calenderRepository.save(
                         Calender.builder()
                                 .user(user)
                                 .date(dto.getDate())
                                 .content(dto.getContent())
                                 .complete(false)
                                 .build()
-                ) );
+                 );
         return CalenderResponseDto.fromEntity(calender);
     }
 
