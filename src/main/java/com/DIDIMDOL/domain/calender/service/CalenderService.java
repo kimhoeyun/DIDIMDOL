@@ -47,7 +47,7 @@ public class CalenderService {
     @Transactional
     public CalenderResponseDto updateCalenderContent(CalenderRequestDto dto){
         Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
-                .orElseThrow(() -> new IllegalArgumentException(""));
+                .orElseThrow(() -> new IllegalArgumentException("일정이 존재하지 않습니다"));
 
         calender.updateContent(dto.getContent());
 
@@ -57,7 +57,7 @@ public class CalenderService {
     @Transactional
     public CalenderResponseDto updateCalenderComplete(CalenderRequestDto dto){
         Calender calender = calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
-                .orElseThrow(()-> new IllegalArgumentException(""));
+                .orElseThrow(()-> new IllegalArgumentException("일정이 존재하지 않습니다"));
 
         calender.updateComplete(calender.isComplete());
 
@@ -68,7 +68,7 @@ public class CalenderService {
     public void deleteCalender(CalenderRequestDto dto){
         Calender calender = calenderRepository
                 .findByUserIdAndDate(dto.getUserId(), dto.getDate())
-                .orElseThrow(() -> new IllegalArgumentException(" "));
+                .orElseThrow(() -> new IllegalArgumentException("일정이 존재하지 않습니다"));
 
         calenderRepository.delete(calender);
     }
