@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class CalenderRequestDto {
     private Long userId;
+    private Long id;
     private LocalDate date;
     private String content;
 

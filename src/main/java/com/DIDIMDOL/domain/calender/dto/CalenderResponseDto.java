@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Builder
 public class CalenderResponseDto {
      private Long userId;
+     private Long id;
      private LocalDate date;
      private String content;
      private boolean complete;
@@ -19,6 +20,7 @@ public class CalenderResponseDto {
      public static CalenderResponseDto fromEntity(Calender calender){
          return CalenderResponseDto.builder()
                  .userId(calender.getUser().getId())
+                 .id(calender.getId())
                  .date(calender.getDate())
                  .content(calender.getContent())
                  .complete(calender.isComplete())
