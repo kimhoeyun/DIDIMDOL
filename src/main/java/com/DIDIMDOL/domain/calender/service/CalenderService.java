@@ -44,6 +44,14 @@ public class CalenderService {
     }
 
     @Transactional
+    public List<CalenderResponseDto> getDayCalender(CalenderRequestDto dto){
+        return calenderRepository.findByUserIdAndDate(dto.getUserId(), dto.getDate())
+                .stream()
+                .map(CalenderResponseDto::fromEntity)
+                .toList();
+    }
+
+    @Transactional
     public CalenderResponseDto updateCalenderContent(CalenderRequestDto dto){
         Calender calender = calenderRepository.findByUserIdAndIdAndDate(dto.getUserId(),dto.getId(), dto.getDate())
                 .orElseThrow(() -> new IllegalArgumentException("일정이 존재하지 않습니다"));

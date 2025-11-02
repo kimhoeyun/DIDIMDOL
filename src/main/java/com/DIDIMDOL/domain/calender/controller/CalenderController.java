@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,17 @@ public class CalenderController {
     @GetMapping("/{userId}")
     public ResponseEntity<List<CalenderResponseDto>> getAllCalenders(@PathVariable Long userId) {
         return ResponseEntity.ok(calenderService.getCalender(userId));
+    }
+
+    @GetMapping("/day")
+    public ResponseEntity<List<CalenderResponseDto>> getDayCalenders(@RequestParam Long userId, @RequestParam String date){
+
+        LocalDate localDate = LocalDate.parse(date);
+
+        CalenderRequestDto dto = new CalenderRequestDto(userId,null,localDate,null);
+        List<CalenderResponseDto> calenderResponseDtoList =calenderService.getDayCalender(dto);
+
+        return ResponseEntity.ok((calenderService.getDayCalender(dto)));
     }
 
     @PutMapping("/content")
