@@ -1,5 +1,6 @@
 package com.DIDIMDOL.domain.user.entity;
 
+import com.DIDIMDOL.domain.calender.entity.Calender;
 import com.DIDIMDOL.domain.progress.entity.Progress;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,4 +33,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Progress> progresses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Calender> calenders = new ArrayList<>();
 }
