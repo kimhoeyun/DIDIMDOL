@@ -16,6 +16,8 @@ public class Exercise {
     private Long id;
 
     private String title;
+
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @Column(columnDefinition = "jsonb")
@@ -24,4 +26,15 @@ public class Exercise {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trainingMetaId", nullable = false)
     private TrainingMeta trainingMeta;
+
+    public Exercise(String title, Difficulty difficulty, String configJson, TrainingMeta trainingMeta) {
+        this.title = title;
+        this.difficulty = difficulty;
+        this.configJson = configJson;
+        this.trainingMeta = trainingMeta;
+    }
+
+    public void changeDifficulty(Difficulty newDifficulty) {
+        this.difficulty = newDifficulty;
+    }
 }
