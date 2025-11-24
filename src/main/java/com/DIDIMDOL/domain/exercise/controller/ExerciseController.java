@@ -20,7 +20,7 @@ public class ExerciseController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PostMapping("/{exerciseId}/difficulty/adjust")
+    @PatchMapping("/{exerciseId}/difficulty/adjust")
     public ResponseEntity<AdjustDifficultyResponseDto> adjustDifficulty(@PathVariable Long exerciseId, @RequestBody AdjustDifficultyRequestDto requestDto) {
         AdjustDifficultyResponseDto responseDto =
                 exerciseDifficultyService.adjustDifficulty(requestDto, exerciseId);
