@@ -18,7 +18,9 @@ public class TrainingMeta {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private TrainingType trainingType;
+
     private String typeDescription;
 
     @OneToMany(mappedBy = "trainingMeta")
